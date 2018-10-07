@@ -20,11 +20,12 @@ function count(req, res, next) {
 }
 
 function list(req, res, next) {
-    var limit = req.query.limit ? req.query.limit : 20;
-    var page = req.query.page ? req.query.page : 0;
+    var limit = req.query.limit && !isNaN(req.query.limit) ? 
+            (Number(req.query.limit) <= 100 ? Number(req.query.limit) : 100) : 20;
+    var page = req.query.page && !isNaN(req.query.page) ? Number(req.query.page) : 0;
     var query = req.query.name ? {name : {$regex : req.query.name, $options: 'i'}} : {};
     return Product.find(query)
-            .limit(Number(limit))
+            .limit(limit)
             .skip(page > 0 ? ((page - 1) * limit) : 0)
             .then(products => {
                 return products;
