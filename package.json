@@ -7,7 +7,7 @@
     "start": "node ./src/app.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "devstart": "nodemon ./src/app.js",
-    "debugdev" : "set DEBUG=* & nodemon ./src/app.js"
+    "debugdev": "set DEBUG=* & nodemon ./src/app.js"
   },
   "repository": {
     "type": "git",
@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/ArmandoFGNeto/express-rest-test#readme",
   "dependencies": {
+    "cors": "^2.8.4",
     "debug": "^4.0.1",
     "express": "^4.16.3",
     "mongoose": "^5.3.1"
